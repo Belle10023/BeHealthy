@@ -1,0 +1,762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BeHealthyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChiefComplaints">
+          <Key>
+            <PropertyRef Name="ChiefComplaintsID" />
+          </Key>
+          <Property Name="ChiefComplaintsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SymptomID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChiefComplaintsDATE" Type="datetime" Nullable="false" />
+          <Property Name="DoctorORDER" Type="nvarchar(max)" />
+          <Property Name="DoctorID" Type="nvarchar" MaxLength="50" />
+          <Property Name="DietitianORDER" Type="nvarchar(max)" />
+          <Property Name="DietitianID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DietarySupplement">
+          <Key>
+            <PropertyRef Name="DietarySupplementID" />
+          </Key>
+          <Property Name="DietarySupplementID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisorderID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DietarySupplementURL" Type="nvarchar(max)" />
+          <Property Name="DietarySupplementNAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dietitian">
+          <Key>
+            <PropertyRef Name="DietitianID" />
+          </Key>
+          <Property Name="DietitianID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DietitianNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DietitianPHONE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DietitianEMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="DietitianPASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disorder">
+          <Key>
+            <PropertyRef Name="DisorderID" />
+          </Key>
+          <Property Name="DisorderID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DietarySupplementID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisorderENAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisorderCNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrganID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="DoctorID" />
+          </Key>
+          <Property Name="DoctorID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DoctorNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DoctorPHONE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DoctorEMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="DoctorPASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExaminationType">
+          <Key>
+            <PropertyRef Name="ExaminationTypeID" />
+          </Key>
+          <Property Name="ExaminationTypeID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExaminationTypeENAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExaminationTypeCNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrganID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medecine">
+          <Key>
+            <PropertyRef Name="MedecineID" />
+          </Key>
+          <Property Name="MedecineID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisorderID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MedecineENAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="MedecineCNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="MedecineLICENSE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MedecineINTRO" Type="nvarchar(max)" />
+          <Property Name="SymptomID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MedicalRecord">
+          <Key>
+            <PropertyRef Name="MedicalRecordID" />
+          </Key>
+          <Property Name="MedicalRecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedecineID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisorderID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MedicalRecordDATE" Type="datetime" Nullable="false" />
+          <Property Name="DoctorID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MemberName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MemberPHONE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MemberEMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemberBIRTHDAY" Type="date" />
+          <Property Name="MemberAGE" Type="tinyint" />
+          <Property Name="MemberGENDER" Type="bit" Nullable="false" />
+          <Property Name="MemberPASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organ">
+          <Key>
+            <PropertyRef Name="OrganID" />
+          </Key>
+          <Property Name="OrganID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrganNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Physical Examination">
+          <Key>
+            <PropertyRef Name="PhysicalExaminatioID" />
+          </Key>
+          <Property Name="PhysicalExaminatioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhysicalExaminatioDATE" Type="datetime" Nullable="false" />
+          <Property Name="ExaminationTypeID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DoctorID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhysicalExaminationDATA" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Symptoms">
+          <Key>
+            <PropertyRef Name="SymptomID" />
+          </Key>
+          <Property Name="SymptomID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SymptomENAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="SymptomCNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrganID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_ChiefComplaints_Symptoms">
+          <End Role="Symptoms" Type="Self.Symptoms" Multiplicity="1" />
+          <End Role="ChiefComplaints" Type="Self.ChiefComplaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Symptoms">
+              <PropertyRef Name="SymptomID" />
+            </Principal>
+            <Dependent Role="ChiefComplaints">
+              <PropertyRef Name="SymptomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietarySupplement_Disorder">
+          <End Role="Disorder" Type="Self.Disorder" Multiplicity="1" />
+          <End Role="DietarySupplement" Type="Self.DietarySupplement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disorder">
+              <PropertyRef Name="DisorderID" />
+            </Principal>
+            <Dependent Role="DietarySupplement">
+              <PropertyRef Name="DisorderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disorder_Organ">
+          <End Role="Organ" Type="Self.Organ" Multiplicity="1" />
+          <End Role="Disorder" Type="Self.Disorder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organ">
+              <PropertyRef Name="OrganID" />
+            </Principal>
+            <Dependent Role="Disorder">
+              <PropertyRef Name="OrganID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExaminationType_Organ">
+          <End Role="Organ" Type="Self.Organ" Multiplicity="1" />
+          <End Role="ExaminationType" Type="Self.ExaminationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organ">
+              <PropertyRef Name="OrganID" />
+            </Principal>
+            <Dependent Role="ExaminationType">
+              <PropertyRef Name="OrganID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medecine_Symptoms">
+          <End Role="Symptoms" Type="Self.Symptoms" Multiplicity="0..1" />
+          <End Role="Medecine" Type="Self.Medecine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Symptoms">
+              <PropertyRef Name="SymptomID" />
+            </Principal>
+            <Dependent Role="Medecine">
+              <PropertyRef Name="SymptomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecord_Disorder">
+          <End Role="Disorder" Type="Self.Disorder" Multiplicity="1" />
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disorder">
+              <PropertyRef Name="DisorderID" />
+            </Principal>
+            <Dependent Role="MedicalRecord">
+              <PropertyRef Name="DisorderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecord_Medecine">
+          <End Role="Medecine" Type="Self.Medecine" Multiplicity="1" />
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecine">
+              <PropertyRef Name="MedecineID" />
+            </Principal>
+            <Dependent Role="MedicalRecord">
+              <PropertyRef Name="MedecineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecord_Members">
+          <End Role="Members" Type="Self.Members" Multiplicity="1" />
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="MedicalRecord">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BeHealthyModelStoreContainer">
+          <EntitySet Name="ChiefComplaints" EntityType="Self.ChiefComplaints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DietarySupplement" EntityType="Self.DietarySupplement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dietitian" EntityType="Self.Dietitian" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disorder" EntityType="Self.Disorder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExaminationType" EntityType="Self.ExaminationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medecine" EntityType="Self.Medecine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalRecord" EntityType="Self.MedicalRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organ" EntityType="Self.Organ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Physical Examination" EntityType="Self.Physical Examination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Symptoms" EntityType="Self.Symptoms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ChiefComplaints_Symptoms" Association="Self.FK_ChiefComplaints_Symptoms">
+            <End Role="Symptoms" EntitySet="Symptoms" />
+            <End Role="ChiefComplaints" EntitySet="ChiefComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietarySupplement_Disorder" Association="Self.FK_DietarySupplement_Disorder">
+            <End Role="Disorder" EntitySet="Disorder" />
+            <End Role="DietarySupplement" EntitySet="DietarySupplement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disorder_Organ" Association="Self.FK_Disorder_Organ">
+            <End Role="Organ" EntitySet="Organ" />
+            <End Role="Disorder" EntitySet="Disorder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExaminationType_Organ" Association="Self.FK_ExaminationType_Organ">
+            <End Role="Organ" EntitySet="Organ" />
+            <End Role="ExaminationType" EntitySet="ExaminationType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medecine_Symptoms" Association="Self.FK_Medecine_Symptoms">
+            <End Role="Symptoms" EntitySet="Symptoms" />
+            <End Role="Medecine" EntitySet="Medecine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecord_Disorder" Association="Self.FK_MedicalRecord_Disorder">
+            <End Role="Disorder" EntitySet="Disorder" />
+            <End Role="MedicalRecord" EntitySet="MedicalRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecord_Medecine" Association="Self.FK_MedicalRecord_Medecine">
+            <End Role="Medecine" EntitySet="Medecine" />
+            <End Role="MedicalRecord" EntitySet="MedicalRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecord_Members" Association="Self.FK_MedicalRecord_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="MedicalRecord" EntitySet="MedicalRecord" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BeHealthyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ChiefComplaints">
+          <Key>
+            <PropertyRef Name="ChiefComplaintsID" />
+          </Key>
+          <Property Name="ChiefComplaintsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SymptomID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChiefComplaintsDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DoctorORDER" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DietitianORDER" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DietitianID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Symptoms" Relationship="Self.FK_ChiefComplaints_Symptoms" FromRole="ChiefComplaints" ToRole="Symptoms" />
+        </EntityType>
+        <EntityType Name="DietarySupplement">
+          <Key>
+            <PropertyRef Name="DietarySupplementID" />
+          </Key>
+          <Property Name="DietarySupplementID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisorderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DietarySupplementURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DietarySupplementNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Disorder" Relationship="Self.FK_DietarySupplement_Disorder" FromRole="DietarySupplement" ToRole="Disorder" />
+        </EntityType>
+        <EntityType Name="Dietitian">
+          <Key>
+            <PropertyRef Name="DietitianID" />
+          </Key>
+          <Property Name="DietitianID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DietitianNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DietitianPHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DietitianEMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DietitianPASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disorder">
+          <Key>
+            <PropertyRef Name="DisorderID" />
+          </Key>
+          <Property Name="DisorderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DietarySupplementID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisorderENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisorderCNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrganID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DietarySupplement" Relationship="Self.FK_DietarySupplement_Disorder" FromRole="Disorder" ToRole="DietarySupplement" />
+          <NavigationProperty Name="Organ" Relationship="Self.FK_Disorder_Organ" FromRole="Disorder" ToRole="Organ" />
+          <NavigationProperty Name="MedicalRecord" Relationship="Self.FK_MedicalRecord_Disorder" FromRole="Disorder" ToRole="MedicalRecord" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="DoctorID" />
+          </Key>
+          <Property Name="DoctorID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoctorNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoctorPHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoctorEMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorPASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExaminationType">
+          <Key>
+            <PropertyRef Name="ExaminationTypeID" />
+          </Key>
+          <Property Name="ExaminationTypeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExaminationTypeENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExaminationTypeCNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrganID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Organ" Relationship="Self.FK_ExaminationType_Organ" FromRole="ExaminationType" ToRole="Organ" />
+        </EntityType>
+        <EntityType Name="Medecine">
+          <Key>
+            <PropertyRef Name="MedecineID" />
+          </Key>
+          <Property Name="MedecineID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisorderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MedecineENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MedecineCNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MedecineLICENSE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MedecineINTRO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SymptomID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Symptoms" Relationship="Self.FK_Medecine_Symptoms" FromRole="Medecine" ToRole="Symptoms" />
+          <NavigationProperty Name="MedicalRecord" Relationship="Self.FK_MedicalRecord_Medecine" FromRole="Medecine" ToRole="MedicalRecord" />
+        </EntityType>
+        <EntityType Name="MedicalRecord">
+          <Key>
+            <PropertyRef Name="MedicalRecordID" />
+          </Key>
+          <Property Name="MedicalRecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedecineID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisorderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MedicalRecordDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DoctorID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Disorder" Relationship="Self.FK_MedicalRecord_Disorder" FromRole="MedicalRecord" ToRole="Disorder" />
+          <NavigationProperty Name="Medecine" Relationship="Self.FK_MedicalRecord_Medecine" FromRole="MedicalRecord" ToRole="Medecine" />
+          <NavigationProperty Name="Members" Relationship="Self.FK_MedicalRecord_Members" FromRole="MedicalRecord" ToRole="Members" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberPHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberEMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemberBIRTHDAY" Type="DateTime" Precision="0" />
+          <Property Name="MemberAGE" Type="Byte" />
+          <Property Name="MemberGENDER" Type="Boolean" Nullable="false" />
+          <Property Name="MemberPASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MedicalRecord" Relationship="Self.FK_MedicalRecord_Members" FromRole="Members" ToRole="MedicalRecord" />
+        </EntityType>
+        <EntityType Name="Organ">
+          <Key>
+            <PropertyRef Name="OrganID" />
+          </Key>
+          <Property Name="OrganID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrganNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Disorder" Relationship="Self.FK_Disorder_Organ" FromRole="Organ" ToRole="Disorder" />
+          <NavigationProperty Name="ExaminationType" Relationship="Self.FK_ExaminationType_Organ" FromRole="Organ" ToRole="ExaminationType" />
+        </EntityType>
+        <EntityType Name="Physical_Examination">
+          <Key>
+            <PropertyRef Name="PhysicalExaminatioID" />
+          </Key>
+          <Property Name="PhysicalExaminatioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhysicalExaminatioDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExaminationTypeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoctorID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MemberID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhysicalExaminationDATA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Symptoms">
+          <Key>
+            <PropertyRef Name="SymptomID" />
+          </Key>
+          <Property Name="SymptomID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SymptomENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SymptomCNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrganID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChiefComplaints" Relationship="Self.FK_ChiefComplaints_Symptoms" FromRole="Symptoms" ToRole="ChiefComplaints" />
+          <NavigationProperty Name="Medecine" Relationship="Self.FK_Medecine_Symptoms" FromRole="Symptoms" ToRole="Medecine" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_ChiefComplaints_Symptoms">
+          <End Role="Symptoms" Type="Self.Symptoms" Multiplicity="1" />
+          <End Role="ChiefComplaints" Type="Self.ChiefComplaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Symptoms">
+              <PropertyRef Name="SymptomID" />
+            </Principal>
+            <Dependent Role="ChiefComplaints">
+              <PropertyRef Name="SymptomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietarySupplement_Disorder">
+          <End Role="Disorder" Type="Self.Disorder" Multiplicity="1" />
+          <End Role="DietarySupplement" Type="Self.DietarySupplement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disorder">
+              <PropertyRef Name="DisorderID" />
+            </Principal>
+            <Dependent Role="DietarySupplement">
+              <PropertyRef Name="DisorderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disorder_Organ">
+          <End Role="Organ" Type="Self.Organ" Multiplicity="1" />
+          <End Role="Disorder" Type="Self.Disorder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organ">
+              <PropertyRef Name="OrganID" />
+            </Principal>
+            <Dependent Role="Disorder">
+              <PropertyRef Name="OrganID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecord_Disorder">
+          <End Role="Disorder" Type="Self.Disorder" Multiplicity="1" />
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disorder">
+              <PropertyRef Name="DisorderID" />
+            </Principal>
+            <Dependent Role="MedicalRecord">
+              <PropertyRef Name="DisorderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExaminationType_Organ">
+          <End Role="Organ" Type="Self.Organ" Multiplicity="1" />
+          <End Role="ExaminationType" Type="Self.ExaminationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organ">
+              <PropertyRef Name="OrganID" />
+            </Principal>
+            <Dependent Role="ExaminationType">
+              <PropertyRef Name="OrganID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medecine_Symptoms">
+          <End Role="Symptoms" Type="Self.Symptoms" Multiplicity="0..1" />
+          <End Role="Medecine" Type="Self.Medecine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Symptoms">
+              <PropertyRef Name="SymptomID" />
+            </Principal>
+            <Dependent Role="Medecine">
+              <PropertyRef Name="SymptomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecord_Medecine">
+          <End Role="Medecine" Type="Self.Medecine" Multiplicity="1" />
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecine">
+              <PropertyRef Name="MedecineID" />
+            </Principal>
+            <Dependent Role="MedicalRecord">
+              <PropertyRef Name="MedecineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalRecord_Members">
+          <End Role="Members" Type="Self.Members" Multiplicity="1" />
+          <End Role="MedicalRecord" Type="Self.MedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="MedicalRecord">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BeHealthyEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChiefComplaints" EntityType="Self.ChiefComplaints" />
+          <EntitySet Name="DietarySupplement" EntityType="Self.DietarySupplement" />
+          <EntitySet Name="Dietitian" EntityType="Self.Dietitian" />
+          <EntitySet Name="Disorder" EntityType="Self.Disorder" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" />
+          <EntitySet Name="ExaminationType" EntityType="Self.ExaminationType" />
+          <EntitySet Name="Medecine" EntityType="Self.Medecine" />
+          <EntitySet Name="MedicalRecord" EntityType="Self.MedicalRecord" />
+          <EntitySet Name="Members" EntityType="Self.Members" />
+          <EntitySet Name="Organ" EntityType="Self.Organ" />
+          <EntitySet Name="Physical_Examination" EntityType="Self.Physical_Examination" />
+          <EntitySet Name="Symptoms" EntityType="Self.Symptoms" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_ChiefComplaints_Symptoms" Association="Self.FK_ChiefComplaints_Symptoms">
+            <End Role="Symptoms" EntitySet="Symptoms" />
+            <End Role="ChiefComplaints" EntitySet="ChiefComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietarySupplement_Disorder" Association="Self.FK_DietarySupplement_Disorder">
+            <End Role="Disorder" EntitySet="Disorder" />
+            <End Role="DietarySupplement" EntitySet="DietarySupplement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disorder_Organ" Association="Self.FK_Disorder_Organ">
+            <End Role="Organ" EntitySet="Organ" />
+            <End Role="Disorder" EntitySet="Disorder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecord_Disorder" Association="Self.FK_MedicalRecord_Disorder">
+            <End Role="Disorder" EntitySet="Disorder" />
+            <End Role="MedicalRecord" EntitySet="MedicalRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExaminationType_Organ" Association="Self.FK_ExaminationType_Organ">
+            <End Role="Organ" EntitySet="Organ" />
+            <End Role="ExaminationType" EntitySet="ExaminationType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medecine_Symptoms" Association="Self.FK_Medecine_Symptoms">
+            <End Role="Symptoms" EntitySet="Symptoms" />
+            <End Role="Medecine" EntitySet="Medecine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecord_Medecine" Association="Self.FK_MedicalRecord_Medecine">
+            <End Role="Medecine" EntitySet="Medecine" />
+            <End Role="MedicalRecord" EntitySet="MedicalRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalRecord_Members" Association="Self.FK_MedicalRecord_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="MedicalRecord" EntitySet="MedicalRecord" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BeHealthyModelStoreContainer" CdmEntityContainer="BeHealthyEntities1">
+          <EntitySetMapping Name="ChiefComplaints">
+            <EntityTypeMapping TypeName="BeHealthyModel.ChiefComplaints">
+              <MappingFragment StoreEntitySet="ChiefComplaints">
+                <ScalarProperty Name="ChiefComplaintsID" ColumnName="ChiefComplaintsID" />
+                <ScalarProperty Name="SymptomID" ColumnName="SymptomID" />
+                <ScalarProperty Name="ChiefComplaintsDATE" ColumnName="ChiefComplaintsDATE" />
+                <ScalarProperty Name="DoctorORDER" ColumnName="DoctorORDER" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="DietitianORDER" ColumnName="DietitianORDER" />
+                <ScalarProperty Name="DietitianID" ColumnName="DietitianID" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DietarySupplement">
+            <EntityTypeMapping TypeName="BeHealthyModel.DietarySupplement">
+              <MappingFragment StoreEntitySet="DietarySupplement">
+                <ScalarProperty Name="DietarySupplementID" ColumnName="DietarySupplementID" />
+                <ScalarProperty Name="DisorderID" ColumnName="DisorderID" />
+                <ScalarProperty Name="DietarySupplementURL" ColumnName="DietarySupplementURL" />
+                <ScalarProperty Name="DietarySupplementNAME" ColumnName="DietarySupplementNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dietitian">
+            <EntityTypeMapping TypeName="BeHealthyModel.Dietitian">
+              <MappingFragment StoreEntitySet="Dietitian">
+                <ScalarProperty Name="DietitianID" ColumnName="DietitianID" />
+                <ScalarProperty Name="DietitianNAME" ColumnName="DietitianNAME" />
+                <ScalarProperty Name="DietitianPHONE" ColumnName="DietitianPHONE" />
+                <ScalarProperty Name="DietitianEMAIL" ColumnName="DietitianEMAIL" />
+                <ScalarProperty Name="DietitianPASSWORD" ColumnName="DietitianPASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disorder">
+            <EntityTypeMapping TypeName="BeHealthyModel.Disorder">
+              <MappingFragment StoreEntitySet="Disorder">
+                <ScalarProperty Name="DisorderID" ColumnName="DisorderID" />
+                <ScalarProperty Name="DietarySupplementID" ColumnName="DietarySupplementID" />
+                <ScalarProperty Name="DisorderENAME" ColumnName="DisorderENAME" />
+                <ScalarProperty Name="DisorderCNAME" ColumnName="DisorderCNAME" />
+                <ScalarProperty Name="OrganID" ColumnName="OrganID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="BeHealthyModel.Doctors">
+              <MappingFragment StoreEntitySet="Doctors">
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="DoctorNAME" ColumnName="DoctorNAME" />
+                <ScalarProperty Name="DoctorPHONE" ColumnName="DoctorPHONE" />
+                <ScalarProperty Name="DoctorEMAIL" ColumnName="DoctorEMAIL" />
+                <ScalarProperty Name="DoctorPASSWORD" ColumnName="DoctorPASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExaminationType">
+            <EntityTypeMapping TypeName="BeHealthyModel.ExaminationType">
+              <MappingFragment StoreEntitySet="ExaminationType">
+                <ScalarProperty Name="ExaminationTypeID" ColumnName="ExaminationTypeID" />
+                <ScalarProperty Name="ExaminationTypeENAME" ColumnName="ExaminationTypeENAME" />
+                <ScalarProperty Name="ExaminationTypeCNAME" ColumnName="ExaminationTypeCNAME" />
+                <ScalarProperty Name="OrganID" ColumnName="OrganID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medecine">
+            <EntityTypeMapping TypeName="BeHealthyModel.Medecine">
+              <MappingFragment StoreEntitySet="Medecine">
+                <ScalarProperty Name="MedecineID" ColumnName="MedecineID" />
+                <ScalarProperty Name="DisorderID" ColumnName="DisorderID" />
+                <ScalarProperty Name="MedecineENAME" ColumnName="MedecineENAME" />
+                <ScalarProperty Name="MedecineCNAME" ColumnName="MedecineCNAME" />
+                <ScalarProperty Name="MedecineLICENSE" ColumnName="MedecineLICENSE" />
+                <ScalarProperty Name="MedecineINTRO" ColumnName="MedecineINTRO" />
+                <ScalarProperty Name="SymptomID" ColumnName="SymptomID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalRecord">
+            <EntityTypeMapping TypeName="BeHealthyModel.MedicalRecord">
+              <MappingFragment StoreEntitySet="MedicalRecord">
+                <ScalarProperty Name="MedicalRecordID" ColumnName="MedicalRecordID" />
+                <ScalarProperty Name="MedecineID" ColumnName="MedecineID" />
+                <ScalarProperty Name="DisorderID" ColumnName="DisorderID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="MedicalRecordDATE" ColumnName="MedicalRecordDATE" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="BeHealthyModel.Members">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+                <ScalarProperty Name="MemberPHONE" ColumnName="MemberPHONE" />
+                <ScalarProperty Name="MemberEMAIL" ColumnName="MemberEMAIL" />
+                <ScalarProperty Name="MemberBIRTHDAY" ColumnName="MemberBIRTHDAY" />
+                <ScalarProperty Name="MemberAGE" ColumnName="MemberAGE" />
+                <ScalarProperty Name="MemberGENDER" ColumnName="MemberGENDER" />
+                <ScalarProperty Name="MemberPASSWORD" ColumnName="MemberPASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organ">
+            <EntityTypeMapping TypeName="BeHealthyModel.Organ">
+              <MappingFragment StoreEntitySet="Organ">
+                <ScalarProperty Name="OrganID" ColumnName="OrganID" />
+                <ScalarProperty Name="OrganNAME" ColumnName="OrganNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Physical_Examination">
+            <EntityTypeMapping TypeName="BeHealthyModel.Physical_Examination">
+              <MappingFragment StoreEntitySet="Physical Examination">
+                <ScalarProperty Name="PhysicalExaminatioID" ColumnName="PhysicalExaminatioID" />
+                <ScalarProperty Name="PhysicalExaminatioDATE" ColumnName="PhysicalExaminatioDATE" />
+                <ScalarProperty Name="ExaminationTypeID" ColumnName="ExaminationTypeID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="PhysicalExaminationDATA" ColumnName="PhysicalExaminationDATA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Symptoms">
+            <EntityTypeMapping TypeName="BeHealthyModel.Symptoms">
+              <MappingFragment StoreEntitySet="Symptoms">
+                <ScalarProperty Name="SymptomID" ColumnName="SymptomID" />
+                <ScalarProperty Name="SymptomENAME" ColumnName="SymptomENAME" />
+                <ScalarProperty Name="SymptomCNAME" ColumnName="SymptomCNAME" />
+                <ScalarProperty Name="OrganID" ColumnName="OrganID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BeHealthyModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

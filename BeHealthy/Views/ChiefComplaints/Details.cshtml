@@ -1,0 +1,75 @@
+﻿@model BeHealthy.Models.ChiefComplaints
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ChiefComplaints</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SymptomID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SymptomID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChiefComplaintsDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChiefComplaintsDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoctorORDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoctorORDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoctorID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoctorID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DietitianORDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DietitianORDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DietitianID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DietitianID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ChiefComplaintsID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

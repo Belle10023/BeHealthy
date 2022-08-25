@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BeHealthy.Models.Members>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HomeManagerLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberPHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberEMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberBIRTHDAY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberAGE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberGENDER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberPASSWORD)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberPHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberEMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberBIRTHDAY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberAGE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberGENDER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberPASSWORD)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MemberID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MemberID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MemberID })
+        </td>
+    </tr>
+}
+
+</table>

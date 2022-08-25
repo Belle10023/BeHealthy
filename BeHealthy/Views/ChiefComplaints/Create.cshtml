@@ -1,0 +1,108 @@
+﻿@model BeHealthy.Models.ChiefComplaints
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+    var ChiefComplaintsDATE = DateTime.Today.ToShortDateString();    /*寫這行去抓日期*/
+    //var CreatedDate = DateTime.Now.ToString("yyyy/MM/dd");
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>ChiefComplaints</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MemberID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input id="Text1" type="text" value=" @ViewBag.MemberID" readonly name="MemberID" />  @*在這裡有把 @ViewBag.MemberID值指定給MemberID這個欄位*@
+            @*@ViewBag.MemberID*@
+            @*@Html.EditorFor(model => model.MemberID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MemberID, "", new { @class = "text-danger" })*@
+        </div>
+    </div>
+    <input id="SymptomID" type="hidden" name="SymptomID" value="SP00000" readonly />
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.SymptomID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            @Html.EditorFor(model => model.SymptomID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SymptomID, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ChiefComplaintsDATE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input id="ChiefComplaintsDATE" type="text" name="ChiefComplaintsDATE" value="@ChiefComplaintsDATE" readonly />  @*這是自動抓日期的寫法，要搭配前面的var變數，可以寫hidden讓他不顯示在頁面*@
+            @*@Html.EditorFor(model => model.ChiefComplaintsDATE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ChiefComplaintsDATE, "", new { @class = "text-danger" })*@
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.DoctorORDER, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DoctorORDER, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DoctorORDER, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.DoctorID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DoctorID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DoctorID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.DietitianORDER, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DietitianORDER, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DietitianORDER, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.DietitianID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DietitianID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DietitianID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <textarea id="TextArea1" rows="20" class="form-control" name="Details"></textarea>
+            @*@Html.TextareaFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+}
+@*@section scripts{
+    <script>
+
+        $('.pagination-container>ul>li').value=   ;  //因為想要用bootstrap的icon 所以須把這些class強制加上去
+        $('.pagination-container a').addClass("page-link");
+
+    </script>
+}*@
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

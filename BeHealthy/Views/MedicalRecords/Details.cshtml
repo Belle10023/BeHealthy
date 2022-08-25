@@ -1,0 +1,59 @@
+﻿@model BeHealthy.Models.MedicalRecord
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MedicalRecord</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MedicalRecordDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedicalRecordDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoctorID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoctorID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disorder.DietarySupplementID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disorder.DietarySupplementID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medecine.DisorderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medecine.DisorderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Members.MemberName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Members.MemberName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MedicalRecordID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

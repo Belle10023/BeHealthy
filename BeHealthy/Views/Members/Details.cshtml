@@ -1,0 +1,75 @@
+﻿@model BeHealthy.Models.Members
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_HomeManagerLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Members</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberPHONE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberPHONE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberEMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberEMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberBIRTHDAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberBIRTHDAY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberAGE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberAGE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberGENDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberGENDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberPASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberPASSWORD)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MemberID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

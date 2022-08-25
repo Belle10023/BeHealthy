@@ -1,0 +1,77 @@
+﻿@*@{
+        ViewBag.Title = "Reply";
+    }
+
+    <h2>Reply</h2>*@
+@model IEnumerable<BeHealthy.Models.ChiefComplaints>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<h2>Dr.@ViewBag.DoctorNAME 主負責病例</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SymptomID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChiefComplaintsDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoctorORDER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoctorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DietitianORDER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DietitianID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SymptomID)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiefComplaintsDATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorORDER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DietitianORDER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DietitianID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ChiefComplaintsID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ChiefComplaintsID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ChiefComplaintsID })
+            </td>
+        </tr>
+    }
+
+</table>

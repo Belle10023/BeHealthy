@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1d28007c498f4f4382292bc2bf417dcb" Name="Diagram1">
+        <EntityTypeShape EntityType="BeHealthyModel.ChiefComplaints" Width="1.5" PointX="6" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.DietarySupplement" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.Dietitian" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.Disorder" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.Doctors" Width="1.5" PointX="2.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.ExaminationType" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.Medecine" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.MedicalRecord" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.Members" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.Organ" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.Physical_Examination" Width="1.5" PointX="8.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.Symptoms" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeHealthyModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="BeHealthyModel.FK_ChiefComplaints_Symptoms" ManuallyRouted="false" />
+        <AssociationConnector Association="BeHealthyModel.FK_DietarySupplement_Disorder" ManuallyRouted="false" />
+        <AssociationConnector Association="BeHealthyModel.FK_Disorder_Organ" ManuallyRouted="false" />
+        <AssociationConnector Association="BeHealthyModel.FK_MedicalRecord_Disorder" ManuallyRouted="false" />
+        <AssociationConnector Association="BeHealthyModel.FK_ExaminationType_Organ" ManuallyRouted="false" />
+        <AssociationConnector Association="BeHealthyModel.FK_Medecine_Symptoms" ManuallyRouted="false" />
+        <AssociationConnector Association="BeHealthyModel.FK_MedicalRecord_Medecine" ManuallyRouted="false" />
+        <AssociationConnector Association="BeHealthyModel.FK_MedicalRecord_Members" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
